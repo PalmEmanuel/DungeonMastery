@@ -1,35 +1,64 @@
-# Import all names to string array
-$Names = Get-Content '.\SwedishLastNames.txt'
-$Names += Get-Content .\MedievalSwedishFirstNames.txt
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory = $false)]
+    [int]$Order = 3,
+
+    [Parameter(Mandatory = $false)]
+    [int]$Count = 20,
+
+    [ValidateScript(
+    {
+        $DataSets = (Get-Content '.\dataconfig.json' | ConvertFrom-Json).Name
+
+        foreach($ProvidedSet in $_) {
+            if ($ProvidedSet -in $DataSets) {
+                $true
+            }
+            else {
+                throw "Data set $ProvidedSet not found, please enter a valid data set among the following: $($DataSets -join ', ')."
+            }
+        }
+    })]
+    [Parameter(Mandatory = $true)]
+    [string[]]$DataSet
+)
+
+$Config = Get-Content '.\dataconfig.json' | ConvertFrom-Json
+
+$Names = @()
+foreach ($Set in $DataSet) {
+    $DataFile = ($Config | Where-Object Name -eq $Set).FileName
+    
+    # Import all names to string array
+    $Names += Get-Content ".\data\$DataFile"
+}
 
 # Create Markov Chain hashtable
 $MarkovChain = @{}
 
-$Order = 6
-$NameCount = 20
-
-# Loop through names
+# Loop through names and populate Markov Chain hashtable with probable characters
 foreach ($Name in $Names) {
-    $Name = " $Name "
+    # Add spaces to indicate start and end of words when added to hashtable
+    [string]$Name = " $Name "
 
     # Loop through each character of the name length - $Order times to make sure not to have index out of bounds
     for ($i = 0; $i -lt $Name.Length - $Order; $i++) {
         # For each character, add it to an array with the key of the previous two characters
-        $KeyValue = $Name.Substring($i, $Order)
-        $MarkovChain[$KeyValue] += [char[]]$Name[$i + $Order]
+        $MarkovChain[$Name.Substring($i, $Order)] += [char[]]$Name[$i + $Order]
     }
 }
 
-for ($i = 0; $i -lt $NameCount; $i++) {
-    # Get a random word that starts with whitespace
+# Generate $Count names
+1..$Count | ForEach-Object {
+    # Get a random word that starts with whitespace, a random start of the name
     $Name = Get-Random ($MarkovChain.Keys | Where-Object { $_ -match '^\s' })
 
-    # Loop until reaching a space
+    # Loop until reaching a space, a random end of the name
     while ($Name -notmatch '\s$') {
         $Next = $MarkovChain[$Name.Substring($Name.Length - $Order, $Order)]
 
         $Name += Get-Random ([object[]]$Next)
     }
 
-    $Name.Trim()   
+    $Name.Trim()
 }
