@@ -10,5 +10,9 @@
     {
         "Name": "Swedish Waters",
         "FileName": "SwedishWaters.txt"
+    },
+    {
+        "Name": "Swedish Towns",
+        "FileName": "SwedishTowns.txt"
     }    
 ]
