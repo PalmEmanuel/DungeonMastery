@@ -6,5 +6,9 @@
     {
         "Name": "Swedish Last Names",
         "FileName": "SwedishLastNames.txt"
-    }
+    },
+    {
+        "Name": "Swedish Waters",
+        "FileName": "SwedishWaters.txt"
+    }    
 ]

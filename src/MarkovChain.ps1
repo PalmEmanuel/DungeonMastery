@@ -13,7 +13,7 @@ function Get-GeneratedName {
         [Parameter(Mandatory = $false)]
         [int]$Count = 20,
         
-        [ValidateSet( [ValidSets] )]
+        [ValidateSet([ValidSets])]
         [Parameter(Mandatory = $true)]
         [string[]]$DataSet
     )
