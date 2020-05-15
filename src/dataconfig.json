@@ -14,5 +14,9 @@
     {
         "Name": "Swedish Towns",
         "FileName": "SwedishTowns.txt"
-    }    
+    },
+    {
+        "Name": "Swedish Cities",
+        "FileName": "SwedishCities.txt"
+    }
 ]
