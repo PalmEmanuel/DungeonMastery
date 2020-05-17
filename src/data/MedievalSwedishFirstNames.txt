@@ -2209,7 +2209,7 @@ Onund
 Oraff
 Orat
 Orch
-ordh
+Ordh
 Oreste
 Orgardus
 Oriarius
@@ -2311,7 +2311,7 @@ Poram
 Porse
 Poskall
 Posse
-prenris
+Prenris
 Pribe
 Pribekinus
 Prik
@@ -2445,11 +2445,11 @@ Ringsten
 Ringvast
 Ringvidh
 Ripse
-ris
+Ris
 Rise
 Rislef
 Rixa
-rnhp
+Rnhp
 Roald
 Roar
 Robbe
@@ -3433,7 +3433,7 @@ Wulfhard
 Vyueiantze
 Väbiorn
 Vädher
-vägh
+Vägh
 Vägärdh
 Vämodh
 Vämund

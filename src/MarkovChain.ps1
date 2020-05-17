@@ -15,7 +15,10 @@ function Get-GeneratedName {
         
         [ValidateSet([ValidSets])]
         [Parameter(Mandatory = $true)]
-        [string[]]$DataSet
+        [string[]]$DataSet,
+
+        [Parameter(Mandatory = $false)]
+        [switch]$ExcludeSource
     )
            
     $Config = Get-Content "$PSScriptRoot\dataconfig.json" | ConvertFrom-Json
@@ -45,16 +48,24 @@ function Get-GeneratedName {
 
     # Generate $Count names
     1..$Count | ForEach-Object {
-        # Get a random word that starts with whitespace, a random start of the name
-        [string]$Name = Get-Random ($MarkovChain.Keys | Where-Object { $_ -match '^\s' })
+        # Make sure that the name generated isn't already in the list
+        do {
+            # Get a random word that starts with whitespace, a random start of the name
+            [string]$Name = Get-Random ($MarkovChain.Keys | Where-Object { $_ -match '^\s' })
+    
+            # Loop until reaching a space, a random end of the name
+            while ($Name -notmatch '\s$') {
+                $Next = $MarkovChain[$Name.Substring($Name.Length - $Order, $Order)]
+    
+                $Name += Get-Random ([object[]]$Next)
+            }
 
-        # Loop until reaching a space, a random end of the name
-        while ($Name -notmatch '\s$') {
-            $Next = $MarkovChain[$Name.Substring($Name.Length - $Order, $Order)]
+            $Name = $Name.Trim()
 
-            $Name += Get-Random ([object[]]$Next)
-        }
+        } while ($ExcludeSource -and $Name -in $Names)
 
-        Write-Output $Name.Trim()
+        Write-Output $Name
     }
 }
+
+Get-GeneratedName -Order 3 -Count 10 -DataSet 'Swedish Towns', 'Swedish Cities' -ExcludeSource
