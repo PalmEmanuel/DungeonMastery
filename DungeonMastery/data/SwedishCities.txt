@@ -1,3 +1,4 @@
+
 Alingsås
 Arboga
 Arvika
@@ -25,7 +26,6 @@ Falsterbo
 Falun
 Filipstad
 Flen
-Gamla Lödöse
 Getakärr
 Gränna
 Gävle
@@ -42,11 +42,10 @@ Härnösand
 Hässleholm
 Hästholmen
 Höganäs
-Järle
 Jerle
+Järle
 Jönköping
 Kalmar
-Karl Johans stad
 Karlshamn
 Karlskoga
 Karlskrona
@@ -78,7 +77,6 @@ Lycksele
 Lyckå
 Lysekil
 Lödöse
-
 Malmö
 Mariefred
 Mariestad
@@ -91,9 +89,6 @@ Nacka
 Nora
 Norrköping
 Norrtälje
-Nya Lidköping
-Nya Lödöse
-Ny Varberg
 Nybro
 Nyköping
 Nynäshamn
@@ -107,7 +102,6 @@ Sandviken
 Sigtuna
 Simrishamn
 Skanör
-Skanör med Falsterbo
 Skara
 Skellefteå
 Skänninge

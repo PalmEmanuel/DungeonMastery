@@ -160,7 +160,6 @@ Djura
 Djurröd
 Djursdala
 Djurö
-domkyrkodistrikt
 Dorotea
 Drängsered
 Dädesjö
@@ -578,7 +577,6 @@ Lagga
 Laholm
 Landa
 Landeryd
-landsdistrikt
 Landvetter
 Lane
 Lau
@@ -943,7 +941,6 @@ Sorunda
 Sparlösa
 Spekeröd
 Spelvik
-stadsdistrikt
 Staffan
 Stafsinge
 Stala

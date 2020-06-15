@@ -8,10 +8,10 @@ function Get-GeneratedName {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $false)]
-        [int]$Order = 3,
+        [int]$Order = 4,
         
         [Parameter(Mandatory = $false)]
-        [int]$Count = 20,
+        [int]$Count = 10,
         
         [ValidateSet([ValidSets])]
         [Parameter(Mandatory = $true)]
@@ -67,5 +67,3 @@ function Get-GeneratedName {
         Write-Output $Name
     }
 }
-
-Get-GeneratedName -Order 3 -Count 10 -DataSet 'Swedish Towns', 'Swedish Cities' -ExcludeSource

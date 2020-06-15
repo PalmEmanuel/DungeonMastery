@@ -18,5 +18,13 @@
     {
         "Name": "Swedish Cities",
         "FileName": "SwedishCities.txt"
+    },
+    {
+        "Name": "Swedish Minerals",
+        "FileName": "SwedishMinerals.txt"
+    },
+    {
+        "Name": "Mythos",
+        "FileName": "Mythos.txt"
     }
 ]
